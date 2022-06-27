@@ -28,6 +28,7 @@ public class ResTableConfig {
     // uint8_t
     private byte touchscreen;
     // uint16_t
+    // see Densities.java for values
     private short density;
     // uint32_t screenType;
 
@@ -58,11 +59,23 @@ public class ResTableConfig {
     private short screenLayout;
     // uint8_t
     private short uiMode;
-    // uint8_t
-    private short screenConfigPad1;
-    // uint8_t
-    private short screenConfigPad2;
+    // uint16_t
+    private int smallestScreenWidthDp;
     //uint32_t screenConfig;
+
+    // uint16_t
+    private int screenWidthDp;
+    // uint16_t
+    private int screenHeightDp;
+    //uint32_t screenSizeDp;
+
+    // uint8_t. Contains round/notround qualifier.
+    private short screenLayout2;
+    // uint8_t. Wide-gamut, HDR, etc.
+    private short colorMode;
+    // uint16_t. Reserved padding.
+    private int screenConfigPad2;
+    //uint32_t screenConfig2;
 
 
     public int getSize() {
@@ -209,19 +222,93 @@ public class ResTableConfig {
         this.uiMode = uiMode;
     }
 
-    public short getScreenConfigPad1() {
-        return screenConfigPad1;
+
+    public int getSmallestScreenWidthDp() {
+        return smallestScreenWidthDp;
     }
 
-    public void setScreenConfigPad1(short screenConfigPad1) {
-        this.screenConfigPad1 = screenConfigPad1;
+    public void setSmallestScreenWidthDp(int smallestScreenWidthDp) {
+        this.smallestScreenWidthDp = smallestScreenWidthDp;
     }
 
-    public short getScreenConfigPad2() {
+    public int getScreenWidthDp() {
+        return screenWidthDp;
+    }
+
+
+    public void setScreenWidthDp(int screenWidthDp) {
+        this.screenWidthDp = screenWidthDp;
+    }
+
+
+    public int getScreenHeightDp() {
+        return screenHeightDp;
+    }
+
+
+    public void setScreenHeightDp(int screenHeightDp) {
+        this.screenHeightDp = screenHeightDp;
+    }
+
+
+    public short getScreenLayout2() {
+        return screenLayout2;
+    }
+
+
+    public void setScreenLayout2(short screenLayout2) {
+        this.screenLayout2 = screenLayout2;
+    }
+
+
+    public short getColorMode() {
+        return colorMode;
+    }
+
+
+    public void setColorMode(short colorMode) {
+        this.colorMode = colorMode;
+    }
+
+
+    public int getScreenConfigPad2() {
         return screenConfigPad2;
     }
 
-    public void setScreenConfigPad2(short screenConfigPad2) {
+
+    public void setScreenConfigPad2(int screenConfigPad2) {
         this.screenConfigPad2 = screenConfigPad2;
+    }
+
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ResTableConfig{");
+        sb.append("size=").append(size);
+        sb.append(", mcc=").append(mcc);
+        sb.append(", mnc=").append(mnc);
+        sb.append(", language='").append(language).append('\'');
+        sb.append(", country='").append(country).append('\'');
+        sb.append(", orientation=").append(orientation);
+        sb.append(", touchscreen=").append(touchscreen);
+        sb.append(", density=").append(density);
+        sb.append(", keyboard=").append(keyboard);
+        sb.append(", navigation=").append(navigation);
+        sb.append(", inputFlags=").append(inputFlags);
+        sb.append(", inputPad0=").append(inputPad0);
+        sb.append(", screenWidth=").append(screenWidth);
+        sb.append(", screenHeight=").append(screenHeight);
+        sb.append(", sdkVersion=").append(sdkVersion);
+        sb.append(", minorVersion=").append(minorVersion);
+        sb.append(", screenLayout=").append(screenLayout);
+        sb.append(", uiMode=").append(uiMode);
+        sb.append(", smallestScreenWidthDp=").append(smallestScreenWidthDp);
+        sb.append(", screenWidthDp=").append(screenWidthDp);
+        sb.append(", screenHeightDp=").append(screenHeightDp);
+        sb.append(", screenLayout2=").append(screenLayout2);
+        sb.append(", colorMode=").append(colorMode);
+        sb.append(", screenConfigPad2=").append(screenConfigPad2);
+        sb.append('}');
+        return sb.toString();
     }
 }

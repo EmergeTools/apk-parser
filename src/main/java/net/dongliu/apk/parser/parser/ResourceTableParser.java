@@ -236,14 +236,47 @@ public class ResourceTableParser {
         // imsi
         config.setMcc(buffer.getShort());
         config.setMnc(buffer.getShort());
-        //read locale
+
+        // read locale
         config.setLanguage(new String(Buffers.readBytes(buffer, 2)).replace("\0", ""));
         config.setCountry(new String(Buffers.readBytes(buffer, 2)).replace("\0", ""));
-        //screen type
+
+        // screen type
         config.setOrientation(Buffers.readUByte(buffer));
         config.setTouchscreen(Buffers.readUByte(buffer));
         config.setDensity(Buffers.readUShort(buffer));
-        // now just skip the others...
+
+        // input
+        config.setKeyboard(Buffers.readUByte(buffer));
+        config.setNavigation(Buffers.readUByte(buffer));
+        config.setInputFlags(Buffers.readUByte(buffer));
+        config.setInputPad0(Buffers.readUByte(buffer));
+
+        // screenSize
+        config.setScreenWidth(Buffers.readUShort(buffer));
+        config.setScreenHeight(Buffers.readUShort(buffer));
+
+        // version
+        config.setSdkVersion(Buffers.readUShort(buffer));
+        config.setMinorVersion(Buffers.readUShort(buffer));
+
+        // screenConfig
+        config.setScreenLayout(Buffers.readUByte(buffer));
+        config.setUiMode(Buffers.readUByte(buffer));
+        config.setSmallestScreenWidthDp(Buffers.readUShort(buffer));
+
+        // screenSizeDp
+        config.setScreenWidthDp(Buffers.readUShort(buffer));
+        config.setScreenHeightDp(Buffers.readUShort(buffer));
+
+        // Ignore localeScript & localeVariant
+        Buffers.readBytes(buffer, 12);
+
+        // screenConfig2
+        config.setScreenLayout2(Buffers.readUByte(buffer));
+        config.setColorMode(Buffers.readUByte(buffer));
+        config.setScreenConfigPad2(Buffers.readUShort(buffer));
+
         long endPos = buffer.position();
         Buffers.skip(buffer, (int) (size - (endPos - beginPos)));
         return config;
