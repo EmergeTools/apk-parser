@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.jetbrains.kotlin)
     `java-gradle-plugin`
 }
 
@@ -10,6 +11,7 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.jetbrains.kotlin)
     implementation(libs.findbugs.jsr305)
     implementation(libs.bouncycastle.bcprov.jdk15on)
     implementation(libs.bouncycastle.bcpkix.jdk15on)
