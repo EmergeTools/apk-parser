@@ -24,6 +24,8 @@ import static net.dongliu.apk.parser.struct.ChunkType.UNKNOWN_YET;
  * @author dongliu
  * @see <a href="https://github.com/aosp-mirror/platform_frameworks_base/blob/master/libs/androidfw/include/androidfw/ResourceTypes.h">ResourceTypes.h</a>
  * @see <a href="https://github.com/aosp-mirror/platform_frameworks_base/blob/master/libs/androidfw/ResourceTypes.cpp">ResourceTypes.cpp</a>
+ * @see <a href="https://developer.android.com/guide/topics/resources/providing-resources">App resources overview</a>
+ * @see <a href="https://developer.android.com/reference/android/content/res/Configuration">Configuration</a>
  */
 public class ResourceTableParser {
 
