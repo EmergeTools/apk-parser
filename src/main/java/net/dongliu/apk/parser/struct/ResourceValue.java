@@ -156,7 +156,7 @@ public abstract class ResourceValue {
                 typeSpec = resource.getTypeSpec();
                 ResourceEntry resourceEntry = resource.getResourceEntry();
                 int localMatchLevel = Locales.match(locale, type.getLocale());
-                int densityLevel = densityLevel(type.getDensity());
+                int densityLevel = densityLevel(type.getResTableConfig().getDensity());
                 if (localMatchLevel > currentLocalMatchLevel) {
                     selected = resourceEntry;
                     currentLocalMatchLevel = localMatchLevel;

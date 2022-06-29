@@ -15,6 +15,7 @@ public class Type {
     private String name;
     private short id;
 
+    private ResTableConfig resTableConfig;
     private Locale locale;
 
     private StringPool keyStringPool;
@@ -22,14 +23,10 @@ public class Type {
     private long[] offsets;
     private StringPool stringPool;
 
-    // see Densities.java for values
-    private int density;
-
     public Type(TypeHeader header) {
         this.id = header.getId();
-        ResTableConfig config = header.getConfig();
-        this.locale = new Locale(config.getLanguage(), config.getCountry());
-        this.density = config.getDensity();
+        this.resTableConfig = header.getConfig();
+        this.locale = new Locale(resTableConfig.getLanguage(), resTableConfig.getCountry());
     }
 
     public ResourceEntry getResourceEntry(int id) {
@@ -151,16 +148,15 @@ public class Type {
         this.stringPool = stringPool;
     }
 
-    public int getDensity() {
-        return density;
-    }
-
     @Override
     public String toString() {
         return "Type{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
-                ", locale=" + locale +
                 '}';
+    }
+
+    public ResTableConfig getResTableConfig() {
+        return resTableConfig;
     }
 }
