@@ -12,7 +12,7 @@ fun Type.dirName(): String {
     }
 
     if (!this.locale.isO3Language.isNullOrEmpty()) {
-        dirBuilder.append("-${this.locale.language}")
+        dirBuilder.append("-${this.locale.isO3Language}")
     }
     if (!this.locale.country.isNullOrEmpty()) {
         dirBuilder.append("-r${this.locale.country}")
