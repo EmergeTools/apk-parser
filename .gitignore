@@ -6,7 +6,7 @@ gradle.properties
 # IntelliJ
 *.iml
 /captures
-.idea/caches
+.idea/
 .idea/*.xml
 .idea/libraries
 .idea/markdown-navigator
